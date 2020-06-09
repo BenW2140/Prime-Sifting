@@ -3,18 +3,30 @@ $(document).ready(function() {
     event.preventDefault();
 
     const limit = parseInt($("input#limit").val());
-    console.log(limit);
     
     let numList = [];
     for (let i = 2; i <= limit; i++) {
       numList.push(i);
     }
 
-    console.log(numList);
-
-    // numList.forEach(function (number) {
-	
-    // });
-
+    const notPrimeArray = [];
+    const primeArray = [];
+    let testNum;
+    
+    for(let i=0; i<numList.length; i++) {
+      testNum = numList[i];
+      numList.forEach(function (element) {
+        if (element % testNum === 0 && element != testNum) {
+          notPrimeArray.push(element);
+        } else if (element % testNum != 0 && element != testNum) {
+          if(!primeArray.includes(element) && notPrimeArray.includes(element)) {
+            primeArray.push(element);
+          } else {
+          
+          }
+        }
+      });
+    }
+  console.log(primeArray);
   });
 });
